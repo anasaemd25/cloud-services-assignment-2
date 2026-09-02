@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Cloud Services - Week 2 Assignment</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 40px;
+                line-height: 1.6;
+                max-width: 800px;
+            }
+            h1 {
+                color: #2c3e50;
+            }
+            h2 {
+                color: #34495e;
+                border-bottom: 2px solid #eee;
+                padding-bottom: 5px;
+            }
+            .answer {
+                background: #f9f9f9;
+                padding: 15px;
+                border-left: 4px solid #3498db;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Cloud Services: Assignment 2</h1>
+        <p>
+            <strong>Platform:</strong>
+            CSC Rahti (OpenShift / Kubernetes)
+        </p>
+
+        <h2>Question 1: Compare application containers to microservices</h2>
+        <div class="answer">
+            Microservices and application containers are two distinct concepts that work together.
+            Microservices are an
+            <strong>architectural software design</strong>
+            where an application is broken down into small, independent pieces that each perform a
+            specific task (such as a login service or payment service). On the other hand,
+            application containers are a
+            <strong>packaging and deployment technology</strong>
+            that bundles code, dependencies, and runtimes into lightweight units. While
+            microservices can run inside containers, they are not the same thing: microservices are
+            <em>how you design software</em>
+            , while containers are
+            <em>how you package and run software</em>
+            .
+        </div>
+
+        <h2>Question 2: What is Kubernetes and what alternatives are there?</h2>
+        <div class="answer">
+            Kubernetes (K8s) is an open-source container orchestration platform used to automate the
+            deployment, scaling, and management of containerized applications across multiple
+            servers. While running a single container manually is simple, managing hundreds requires
+            an automated orchestrator like Kubernetes to handle tasks like self-healing and
+            auto-scaling. Popular alternatives include
+            <strong>Red Hat OpenShift</strong>
+            (used by CSC Rahti),
+            <strong>Docker Swarm</strong>
+            ,
+            <strong>HashiCorp Nomad</strong>
+            , and
+            <strong>Apache Mesos</strong>
+            .
+        </div>
+
+        <h2>Question 3: Virtualization platform for a Windows VM on a laptop</h2>
+        <div class="answer">
+            If I needed to run a virtualized Windows operating system on my laptop, I would choose
+            <strong>Oracle VirtualBox</strong>
+            (or
+            <strong>VMware Workstation</strong>
+            ). Having used both platforms for over five years—including setting up specialized Linux
+            distributions like Kali and Parrot OS—both offer reliable Type-2 virtualization.
+            VirtualBox is ideal because it is completely free, open-source, beginner-friendly, and
+            cross-platform. Alternatively, VMware provides excellent performance and hardware
+            acceleration for resource-heavy operating systems like Windows.
+        </div>
+
+        <h2>Question 4: Security risks when using third-party containers</h2>
+        <div class="answer">
+            When using third-party containers (e.g., from Docker Hub), key security risks include:
+            <ul>
+                <li>
+                    <strong>Vulnerabilities in Outdated Base Images:</strong>
+                    Images often contain unpatched operating system packages or dependencies with
+                    security flaws (CVEs).
+                </li>
+                <li>
+                    <strong>Malicious Images:</strong>
+                    Public repositories can host images containing hidden malware, crypto-miners, or
+                    backdoors.
+                </li>
+                <li>
+                    <strong>Over-Privileged Execution:</strong>
+                    Containers defaulting to root user permissions can lead to container escape
+                    attacks if compromised.
+                </li>
+                <li>
+                    <strong>Exposed Secrets:</strong>
+                    Hardcoded passwords, API keys, or private SSH keys left in image layers can be
+                    extracted by unauthorized users.
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
