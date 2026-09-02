@@ -5,23 +5,27 @@
         <title>Cloud Services - Week 2 Assignment</title>
         <style>
             body {
-                font-family: Arial, sans-serif;
-                margin: 40px;
-                line-height: 1.6;
-                max-width: 800px;
+                min-height: 100vh;
+                margin: 0 auto;
+                max-width: 900px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
             h1 {
-                color: #2c3e50;
+                color: tomato;
             }
             h2 {
-                color: #34495e;
-                border-bottom: 2px solid #eee;
+                color: black;
+                border-bottom: 2px solid gray;
                 padding-bottom: 5px;
             }
             .answer {
                 background: #f9f9f9;
                 padding: 15px;
-                border-left: 4px solid #3498db;
+                border-left: 4px solid blue;
                 margin-bottom: 20px;
             }
         </style>
@@ -33,30 +37,37 @@
             CSC Rahti (OpenShift / Kubernetes)
         </p>
 
+        <p>
+            <strong><i>Anas El-maoui Daher</i></strong>
+        </p>
+
         <h2>Question 1: Compare application containers to microservices</h2>
         <div class="answer">
-            Microservices and application containers are two distinct concepts that work together.
+            Microservices and application containers are two different concepts that work together.
             Microservices are an
             <strong>architectural software design</strong>
-            where an application is broken down into small, independent pieces that each perform a
-            specific task (such as a login service or payment service). On the other hand,
-            application containers are a
+            where an application is broken down into small independent pieces, and each of those
+            perform a specific task (for example a login or payment service etc...).
+            <br />
+            Application containers are a
             <strong>packaging and deployment technology</strong>
-            that bundles code, dependencies, and runtimes into lightweight units. While
+            that packs code, dependencies, and runtimes into very lightweight units. While
             microservices can run inside containers, they are not the same thing: microservices are
             <em>how you design software</em>
-            , while containers are
+            , and containers are
             <em>how you package and run software</em>
             .
         </div>
 
         <h2>Question 2: What is Kubernetes and what alternatives are there?</h2>
         <div class="answer">
-            Kubernetes (K8s) is an open-source container orchestration platform used to automate the
-            deployment, scaling, and management of containerized applications across multiple
-            servers. While running a single container manually is simple, managing hundreds requires
-            an automated orchestrator like Kubernetes to handle tasks like self-healing and
-            auto-scaling. Popular alternatives include
+            Kubernetes is an open-source container orchestration platform used to automate the
+            deployment, scaling and managin containerized applications across multiple servers.
+            Running a single container manually is kinda simple, but managing hundreds requires an
+            automated orchestrator like Kubernetes to handle tasks like self-healing and
+            auto-scaling.
+            <br />
+            Popular alternatives include
             <strong>Red Hat OpenShift</strong>
             (used by CSC Rahti),
             <strong>Docker Swarm</strong>
@@ -70,24 +81,25 @@
         <h2>Question 3: Virtualization platform for a Windows VM on a laptop</h2>
         <div class="answer">
             If I needed to run a virtualized Windows operating system on my laptop, I would choose
-            <strong>Oracle VirtualBox</strong>
-            (or
+            <strong>VirtualBox</strong>
+            or
             <strong>VMware Workstation</strong>
-            ). Having used both platforms for over five years—including setting up specialized Linux
-            distributions like Kali and Parrot OS—both offer reliable Type-2 virtualization.
-            VirtualBox is ideal because it is completely free, open-source, beginner-friendly, and
+            . I have used both for over five years, including setting up specialized Linux
+            distributions like Kali and Parrot OS, both offer reliable virtualization. VirtualBox is
+            very good because it is completely free, open-source, beginner-friendly, and
             cross-platform. Alternatively, VMware provides excellent performance and hardware
-            acceleration for resource-heavy operating systems like Windows.
+            acceleration for resource-heavy operating systems like Windows or Windows Server.
         </div>
 
         <h2>Question 4: Security risks when using third-party containers</h2>
         <div class="answer">
-            When using third-party containers (e.g., from Docker Hub), key security risks include:
+            When using third-party containers, key security risks include:
             <ul>
                 <li>
                     <strong>Vulnerabilities in Outdated Base Images:</strong>
                     Images often contain unpatched operating system packages or dependencies with
-                    security flaws (CVEs).
+                    known security flaws (CVEs), as well as vulnerabilities susceptible to zero-day
+                    attacks and malware.
                 </li>
                 <li>
                     <strong>Malicious Images:</strong>
@@ -102,7 +114,7 @@
                 <li>
                     <strong>Exposed Secrets:</strong>
                     Hardcoded passwords, API keys, or private SSH keys left in image layers can be
-                    extracted by unauthorized users.
+                    extracted by users with bad intentions.
                 </li>
             </ul>
         </div>
