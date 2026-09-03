@@ -2,35 +2,39 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Cloud Services - Week 2 Assignment</title>
+        <title>Cloud Services - Week 2 Assignment </title>
         <style>
             body {
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
+                font-family: Arial;
+                line-height: 1.5;
                 min-height: 100vh;
-                max-width: 900px;
-                margin: 0 auto;
+                max-width: 800px;
+                margin: auto;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 text-align: center;
+                background: white;
             }
-            
+        
             h1 {
-                color: #2c3e50;
+                color: navy ;
             }
+        
             h2 {
-                color: #34495e;
-                border-bottom: 2px solid #eee;
+                color: steelblue;
+                border-bottom: 2px solid lightgray;
                 padding-bottom: 5px;
             }
+        
             .answer {
-                background: #f9f9f9;
-                padding: 15px;
-                border-left: 4px solid #3498db;
-                margin-bottom: 20px;
+                background: lightgray;
+                padding: 10px;
+                border-left: 4px solid steelblue;
+                margin-bottom: 15px;
             }
+
         </style>
     </head>
     <body>
@@ -53,14 +57,14 @@
 
         <h2>Describe shortly what is Kubernetes and what alternatives are there? </h2>
         <div class="answer">
-            Kubernetes is an open-source container orchestration platform used to automate the deployment, scaling, and management of containerized applications across a cluster of servers[cite: 2, 3]. Managing a single container manually is simple, but managing hundreds requires an automated orchestrator to handle tasks like self-healing and auto-scaling when traffic increases[cite: 2, 3].
+            Kubernetes is an open-source container orchestration platform used to automate the deployment, scaling, and management of containerized applications across a cluster of servers. Managing a single container manually is simple, but managing hundreds requires an automated orchestrator to handle tasks like self-healing and auto-scaling when traffic increases
             <br><br>
-            Popular alternatives to Kubernetes include Red Hat OpenShift (which is used by CSC Rahti)[cite: 2, 3], Docker Swarm, HashiCorp Nomad, and Apache Mesos.
+            Popular alternatives to Kubernetes include Red Hat OpenShift (which is used by CSC Rahti) , Docker Swarm, HashiCorp Nomad, and Apache Mesos.
         </div>
 
         <h2>If you would now use a virtualized Windows operating system in your laptop (whatever operating system the laptop already has): Which virtualization platform (VMware, Virtualbox, Hyper-V, KVM, etc…) would you use and why? </h2>
         <div class="answer">
-            If I had to choose a virtualized Windows operating system and run it on my laptop, I'd probably choose VirtualBox or VMware[cite: 3]. I have used those two for over five years, mainly for setting up Linux distributions like Kali Linux and Parrot OS for learning purposes. Both offer reliable virtualization. VirtualBox is completely free, open-source, and beginner-friendly to configure[cite: 3]. VMware is also a solid option because it usually provides better hardware acceleration and performance for resource-heavy operating systems like Windows. So to run a VM with virtual Windows, I would use either of those two; personally, for me, there's no big difference.
+            If I had to choose a virtualized Windows operating system and run it on my laptop, I'd probably choose VirtualBox or VMware. I have used those two for over five years, mainly for setting up Linux distributions like Kali Linux and Parrot OS for learning purposes. Both offer reliable virtualization. VirtualBox is completely free, open-source, and beginner-friendly to configure. VMware is also a solid option because it usually provides better hardware acceleration and performance for resource-heavy operating systems like Windows. So to run a VM with virtual Windows, I would use either of those two; personally, for me, there's no big difference.
         </div>
 
         <h2>List some information security risks when using third party (for example Docker) containers?</h2>
@@ -74,10 +78,10 @@
                     <strong>Malicious images:</strong> Since anyone can publish images on public registries, some might contain hidden malware, crypto-miners, or backdoors disguised as normal software.
                 </li>
                 <li>
-                    <strong>Running as root:</strong> Many public containers run their processes as the root user by default[cite: 6]. If a container gets compromised, an attacker could potentially break out of it and gain access to the host machine[cite: 6].
+                    <strong>Running as root:</strong> Many public containers run their processes as the root user by default. If a container gets compromised, an attacker could potentially break out of it and gain access to the host machine.
                 </li>
                 <li>
-                    <strong>Exposed secrets: </strong> Developers sometimes accidentally leave hardcoded passwords, API keys, or private SSH keys inside the container image layers, which can easily be extracted by anyone who downloads the image[cite: 6].
+                    <strong>Exposed secrets: </strong> Developers sometimes accidentally leave hardcoded passwords, API keys, or private SSH keys inside the container image layers, which can easily be extracted by anyone who downloads the image.
                 </li>
             </ul>
         </div>
