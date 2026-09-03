@@ -5,27 +5,30 @@
         <title>Cloud Services - Week 2 Assignment</title>
         <style>
             body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
                 min-height: 100vh;
-                margin: 0 auto;
                 max-width: 900px;
+                margin: 0 auto;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 text-align: center;
             }
+            
             h1 {
-                color: tomato;
+                color: #2c3e50;
             }
             h2 {
-                color: black;
-                border-bottom: 2px solid gray;
+                color: #34495e;
+                border-bottom: 2px solid #eee;
                 padding-bottom: 5px;
             }
             .answer {
                 background: #f9f9f9;
                 padding: 15px;
-                border-left: 4px solid blue;
+                border-left: 4px solid #3498db;
                 margin-bottom: 20px;
             }
         </style>
@@ -37,84 +40,40 @@
             CSC Rahti (OpenShift / Kubernetes)
         </p>
 
-        <p>
-            <strong><i>Anas El-maoui Daher</i></strong>
-        </p>
-
-        <h2>Question 1: Compare application containers to microservices</h2>
+        <h2>Compare application containers to microservices</h2>
         <div class="answer">
-            Microservices and application containers are two different concepts that work together.
-            Microservices are an
-            <strong>architectural software design</strong>
-            where an application is broken down into small independent pieces, and each of those
-            perform a specific task (for example a login or payment service etc...).
-            <br />
-            Application containers are a
-            <strong>packaging and deployment technology</strong>
-            that packs code, dependencies, and runtimes into very lightweight units. While
-            microservices can run inside containers, they are not the same thing: microservices are
-            <em>how you design software</em>
-            , and containers are
-            <em>how you package and run software</em>
-            .
+            Microservices and containers are two different things, but people often get them mixed up because they are used together. Microservices are an architectural style where a big application is broken into tiny, independent services, like having one separate service just for user login and another one for payments.
+            <br><br>
+            Containers, on the other hand, are the actual tech that is used to package and run software. A container bundles code, libraries, and runtime so it runs the same way anywhere. So basically, microservices are about how software architecture is designed, while containers are just the tool used to package and deploy those services.
         </div>
 
-        <h2>Question 2: What is Kubernetes and what alternatives are there?</h2>
+        <h2>Describe shortly what is Kubernetes and what alternatives are there?</h2>
         <div class="answer">
-            Kubernetes is an open-source container orchestration platform used to automate the
-            deployment, scaling and managin containerized applications across multiple servers.
-            Running a single container manually is kinda simple, but managing hundreds requires an
-            automated orchestrator like Kubernetes to handle tasks like self-healing and
-            auto-scaling.
-            <br />
-            Popular alternatives include
-            <strong>Red Hat OpenShift</strong>
-            (used by CSC Rahti),
-            <strong>Docker Swarm</strong>
-            ,
-            <strong>HashiCorp Nomad</strong>
-            , and
-            <strong>Apache Mesos</strong>
-            .
+            Kubernetes is an open-source container orchestration platform used to automate the deployment, scaling, and management of containerized applications across a cluster of servers[cite: 2, 3]. Managing a single container manually is simple, but managing hundreds requires an automated orchestrator to handle tasks like self-healing and auto-scaling when traffic increases[cite: 2, 3].
+            <br><br>
+            Popular alternatives to Kubernetes include Red Hat OpenShift (which is used by CSC Rahti)[cite: 2, 3], Docker Swarm, HashiCorp Nomad, and Apache Mesos.
         </div>
 
-        <h2>Question 3: Virtualization platform for a Windows VM on a laptop</h2>
+        <h2>If you would now use a virtualized Windows operating system in your laptop (whatever operating system the laptop already has): Which virtualization platform (VMware, Virtualbox, Hyper-V, KVM, etc…) would you use and why?</h2>
         <div class="answer">
-            If I needed to run a virtualized Windows operating system on my laptop, I would choose
-            <strong>VirtualBox</strong>
-            or
-            <strong>VMware Workstation</strong>
-            . I have used both for over five years, including setting up specialized Linux
-            distributions like Kali and Parrot OS, both offer reliable virtualization. VirtualBox is
-            very good because it is completely free, open-source, beginner-friendly, and
-            cross-platform. Alternatively, VMware provides excellent performance and hardware
-            acceleration for resource-heavy operating systems like Windows or Windows Server.
+            If I had to choose a virtualized Windows operating system and run it on my laptop, I'd probably choose VirtualBox or VMware[cite: 3]. I have used those two for over five years, mainly for setting up Linux distributions like Kali Linux and Parrot OS for learning purposes. Both offer reliable virtualization. VirtualBox is completely free, open-source, and beginner-friendly to configure[cite: 3]. VMware is also a solid option because it usually provides better hardware acceleration and performance for resource-heavy operating systems like Windows. So to run a VM with virtual Windows, I would use either of those two; personally, for me, there's no big difference.
         </div>
 
-        <h2>Question 4: Security risks when using third-party containers</h2>
+        <h2>List some information security risks when using third party (for example Docker) containers?</h2>
         <div class="answer">
-            When using third-party containers, key security risks include:
+            When using third-party container images (such as those from Docker Hub), several security risks exist:
             <ul>
                 <li>
-                    <strong>Vulnerabilities in Outdated Base Images:</strong>
-                    Images often contain unpatched operating system packages or dependencies with
-                    known security flaws (CVEs), as well as vulnerabilities susceptible to zero-day
-                    attacks and malware.
+                    <strong>Outdated dependencies:</strong> Base images often contain old software packages or libraries with known security flaws (CVEs) that can be exploited if they aren't patched.
                 </li>
                 <li>
-                    <strong>Malicious Images:</strong>
-                    Public repositories can host images containing hidden malware, crypto-miners, or
-                    backdoors.
+                    <strong>Malicious images:</strong> Since anyone can publish images on public registries, some might contain hidden malware, crypto-miners, or backdoors disguised as normal software.
                 </li>
                 <li>
-                    <strong>Over-Privileged Execution:</strong>
-                    Containers defaulting to root user permissions can lead to container escape
-                    attacks if compromised.
+                    <strong>Running as root:</strong> Many public containers run their processes as the root user by default[cite: 6]. If a container gets compromised, an attacker could potentially break out of it and gain access to the host machine[cite: 6].
                 </li>
                 <li>
-                    <strong>Exposed Secrets:</strong>
-                    Hardcoded passwords, API keys, or private SSH keys left in image layers can be
-                    extracted by users with bad intentions.
+                    <strong>Exposed secrets:</strong> Developers sometimes accidentally leave hardcoded passwords, API keys, or private SSH keys inside the container image layers, which can easily be extracted by anyone who downloads the image[cite: 6].
                 </li>
             </ul>
         </div>
