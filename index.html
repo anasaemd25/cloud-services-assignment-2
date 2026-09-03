@@ -36,10 +36,14 @@
     <body>
         <h1>Cloud Services: Assignment 2</h1>
         <p>
-            <strong>Platform:</strong>
+            <strong>Platform: </strong>
             CSC Rahti (OpenShift / Kubernetes)
         </p>
-
+        
+        <p>
+            <strong> Anas El-maoui Daher </strong>
+        </p>
+        
         <h2>Compare application containers to microservices</h2>
         <div class="answer">
             Microservices and containers are two different things, but people often get them mixed up because they are used together. Microservices are an architectural style where a big application is broken into tiny, independent services, like having one separate service just for user login and another one for payments.
@@ -47,14 +51,14 @@
             Containers, on the other hand, are the actual tech that is used to package and run software. A container bundles code, libraries, and runtime so it runs the same way anywhere. So basically, microservices are about how software architecture is designed, while containers are just the tool used to package and deploy those services.
         </div>
 
-        <h2>Describe shortly what is Kubernetes and what alternatives are there?</h2>
+        <h2>Describe shortly what is Kubernetes and what alternatives are there? </h2>
         <div class="answer">
             Kubernetes is an open-source container orchestration platform used to automate the deployment, scaling, and management of containerized applications across a cluster of servers[cite: 2, 3]. Managing a single container manually is simple, but managing hundreds requires an automated orchestrator to handle tasks like self-healing and auto-scaling when traffic increases[cite: 2, 3].
             <br><br>
             Popular alternatives to Kubernetes include Red Hat OpenShift (which is used by CSC Rahti)[cite: 2, 3], Docker Swarm, HashiCorp Nomad, and Apache Mesos.
         </div>
 
-        <h2>If you would now use a virtualized Windows operating system in your laptop (whatever operating system the laptop already has): Which virtualization platform (VMware, Virtualbox, Hyper-V, KVM, etc…) would you use and why?</h2>
+        <h2>If you would now use a virtualized Windows operating system in your laptop (whatever operating system the laptop already has): Which virtualization platform (VMware, Virtualbox, Hyper-V, KVM, etc…) would you use and why? </h2>
         <div class="answer">
             If I had to choose a virtualized Windows operating system and run it on my laptop, I'd probably choose VirtualBox or VMware[cite: 3]. I have used those two for over five years, mainly for setting up Linux distributions like Kali Linux and Parrot OS for learning purposes. Both offer reliable virtualization. VirtualBox is completely free, open-source, and beginner-friendly to configure[cite: 3]. VMware is also a solid option because it usually provides better hardware acceleration and performance for resource-heavy operating systems like Windows. So to run a VM with virtual Windows, I would use either of those two; personally, for me, there's no big difference.
         </div>
@@ -64,7 +68,7 @@
             When using third-party container images (such as those from Docker Hub), several security risks exist:
             <ul>
                 <li>
-                    <strong>Outdated dependencies:</strong> Base images often contain old software packages or libraries with known security flaws (CVEs) that can be exploited if they aren't patched.
+                    <strong>Outdated dependencies: </strong> Base images often contain old software packages or libraries with known security flaws (CVEs) that can be exploited if they aren't patched.
                 </li>
                 <li>
                     <strong>Malicious images:</strong> Since anyone can publish images on public registries, some might contain hidden malware, crypto-miners, or backdoors disguised as normal software.
@@ -73,7 +77,7 @@
                     <strong>Running as root:</strong> Many public containers run their processes as the root user by default[cite: 6]. If a container gets compromised, an attacker could potentially break out of it and gain access to the host machine[cite: 6].
                 </li>
                 <li>
-                    <strong>Exposed secrets:</strong> Developers sometimes accidentally leave hardcoded passwords, API keys, or private SSH keys inside the container image layers, which can easily be extracted by anyone who downloads the image[cite: 6].
+                    <strong>Exposed secrets: </strong> Developers sometimes accidentally leave hardcoded passwords, API keys, or private SSH keys inside the container image layers, which can easily be extracted by anyone who downloads the image[cite: 6].
                 </li>
             </ul>
         </div>
