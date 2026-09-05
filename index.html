@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Cloud Services - Week 2 Assignment </title>
+        <title>Cloud Services - Week 2 Assignment</title>
         <style>
             body {
                 font-family: Arial;
@@ -17,70 +17,129 @@
                 text-align: center;
                 background: white;
             }
-        
+
             h1 {
-                color: navy ;
+                color: navy;
             }
-        
+
             h2 {
                 color: steelblue;
                 border-bottom: 2px solid lightgray;
                 padding-bottom: 5px;
             }
-        
+
             .answer {
                 padding: 10px;
                 border-left: 4px solid steelblue;
                 margin-bottom: 15px;
             }
-
         </style>
     </head>
     <body>
         <h1>Cloud Services: Assignment 2</h1>
         <p>
-            <strong>Platform: </strong>
+            <strong>Platform:</strong>
             CSC Rahti (OpenShift / Kubernetes)
         </p>
-        
+
         <p>
-            <strong> Anas El-maoui Daher </strong>
+            <strong>Anas El-maoui Daher</strong>
         </p>
-        
+
         <h2>Compare application containers to microservices</h2>
         <div class="answer">
-            Microservices and containers are two different things, but people often get them mixed up because they are used together. Microservices are an architectural style where a big application is broken into tiny, independent services, like having one separate service just for user login and another one for payments.
-            <br><br>
-            Containers, on the other hand, are the actual tech that is used to package and run software. A container bundles code, libraries, and runtime so it runs the same way anywhere. So basically, microservices are about how software architecture is designed, while containers are just the tool used to package and deploy those services.
+            Microservices and containers are two different things, but people often get them mixed
+            up because they are used together. Microservices are an architectural software design
+            where a big application is broken into smaller independent services, like having one
+            separate service just for user login, another for processing payments, and another for
+            rendering the UI.
+            <br />
+            <br />
+            Containers, on the other hand, are an isolated process and a deployment technology used
+            to package software. A container bundles code, libraries, dependencies, and runtime
+            environment into a single unit so it runs identically anywhere.
+            <br />
+            <br />
+            The main difference is that microservices are about how software architecture is
+            designed, while containers are about how software is packaged and deployed.
+            Microservices are a design paradigm, and containers are just the most popular tool to
+            implement that paradigm. However, microservices can exist without containers they can
+            also run on serverless functions, traditional virtual machines, or directly on a host
+            OS. Containers are simply preferred because of fast boot times, resource efficiency, and
+            easy scaling with orchestrators like Kubernetes.
         </div>
 
-        <h2>Describe shortly what is Kubernetes and what alternatives are there? </h2>
+        <h2>Describe shortly what is Kubernetes and what alternatives are there?</h2>
         <div class="answer">
-            Kubernetes is an open-source container orchestration platform used to automate the deployment, scaling, and management of containerized applications across a cluster of servers. Managing a single container manually is simple, but managing hundreds requires an automated orchestrator to handle tasks like self-healing and auto-scaling when traffic increases
-            <br><br>
-            Popular alternatives to Kubernetes include Red Hat OpenShift (which is used by CSC Rahti) , Docker Swarm, HashiCorp Nomad, and Apache Mesos.
+            Kubernetes is an open-source container orchestration platform used to automate the
+            deployment, scaling, and management of containerized applications across a cluster of
+            nodes. Managing a single container manually with simple commands is easy, but managing
+            dozens or hundreds in production requires an orchestrator to handle automation tasks
+            like self-healing (restarting crashed containers), rolling updates, load balancing, and
+            auto-scaling when user traffic spikes.
+            <br />
+            <br />
+            There are several alternatives to standard Kubernetes depending on the use case. Red Hat
+            OpenShift (which powers CSC Rahti) is an enterprise focused platform built on top of
+            Kubernetes that adds extra developer tools and strict security defaults out of the box.
+            Other alternatives include Docker Swarm for lightweight setups, HashiCorp Nomad for
+            managing both containers and non-containerized legacy apps, and cloud-native managed
+            services like AWS.
         </div>
 
-        <h2>If you would now use a virtualized Windows operating system in your laptop (whatever operating system the laptop already has): Which virtualization platform (VMware, Virtualbox, Hyper-V, KVM, etc…) would you use and why? </h2>
+        <h2>
+            If you would now use a virtualized Windows operating system in your laptop (whatever
+            operating system the laptop already has): Which virtualization platform (VMware,
+            Virtualbox, Hyper-V, KVM, etc…) would you use and why?
+        </h2>
         <div class="answer">
-            If I had to choose a virtualized Windows operating system and run it on my laptop, I'd probably choose VirtualBox or VMware. I have used those two for over five years, mainly for setting up Linux distributions like Kali Linux and Parrot OS for learning purposes. Both offer reliable virtualization. VirtualBox is completely free, open-source, and beginner-friendly to configure. VMware is also a solid option because it usually provides better hardware acceleration and performance for resource-heavy operating systems like Windows. So to run a VM with virtual Windows, I would use either of those two; personally, for me, there's no big difference.
+            If I had to choose a virtualized Windows operating system and run it on my laptop, I'd
+            probably choose VirtualBox or VMware Workstation. I have used those two platforms for
+            over five years, mainly for setting up Linux distributions like Kali Linux and Parrot OS
+            for learning purposes. Both offer reliable hypervisor virtualization that runs on top of
+            an existing host operating system.
+            <br />
+            <br />
+            VirtualBox is completely free, open-source, cross-platform, and beginner friendly to
+            configure. VMware is also a very good option because it usually provides a bit better
+            hardware acceleration, 3D graphics support, and overall smooth performance for
+            resource-heavy OS setups like Windows 11 or Windows Server. If I needed a quick free
+            setup I'd use VirtualBox, but for better performance on Windows I'd pick VMware,
+            personally, for basic daily tasks, there's no difference between them for me.
         </div>
 
-        <h2>List some information security risks when using third party (for example Docker) containers?</h2>
+        <h2>
+            List some information security risks when using third party (for example Docker)
+            containers?
+        </h2>
         <div class="answer">
-            When using third-party container images (such as those from Docker Hub), several security risks exist:
+            When using third-party container images from public registries (like Docker Hub),
+            several major security risks must be considered:
             <ul>
                 <li>
-                    <strong>Outdated dependencies: </strong> Base images often contain old software packages or libraries with known security flaws (CVEs) that can be exploited if they aren't patched.
+                    <strong>Vulnerabilities in Outdated Base Images:</strong>
+                    Base images often contain outdated operating system packages or dependencies
+                    with unpatched security flaws (CVEs). Attackers can exploit these known
+                    vulnerabilities to execute arbitrary code or gain unauthorized access.
                 </li>
                 <li>
-                    <strong>Malicious images:</strong> Since anyone can publish images on public registries, some might contain hidden malware, crypto-miners, or backdoors disguised as normal software.
+                    <strong>Malicious Images:</strong>
+                    Public registries allow almost anyone to upload images. Unverified third-party
+                    images could contain hidden malware, crypto-miners, or backdoors designed to
+                    compromise the host network.
                 </li>
                 <li>
-                    <strong>Running as root:</strong> Many public containers run their processes as the root user by default. If a container gets compromised, an attacker could potentially break out of it and gain access to the host machine.
+                    <strong>Running as Root (Over-Privileged Execution):</strong>
+                    Many public container images execute their default processes as the root user.
+                    If a security vulnerability allows an attacker to compromise the application,
+                    running as root makes container escape attacks much easier, potentially giving
+                    the attacker full root access to the host machine.
                 </li>
                 <li>
-                    <strong>Exposed secrets: </strong> Developers sometimes accidentally leave hardcoded passwords, API keys, or private SSH keys inside the container image layers, which can easily be extracted by anyone who downloads the image.
+                    <strong>Exposed Secrets in Layers:</strong>
+                    Developers sometimes accidentally hardcode sensitive credentials, such as
+                    database passwords, API tokens, or SSH keys during the build process. Anyone who
+                    downloads the container image can inspect its history and extract those.
                 </li>
             </ul>
         </div>
