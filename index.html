@@ -26,12 +26,31 @@
                 color: steelblue;
                 border-bottom: 2px solid lightgray;
                 padding-bottom: 5px;
+                margin-top: 30px;
             }
 
             .answer {
                 padding: 10px;
                 border-left: 4px solid steelblue;
                 margin-bottom: 15px;
+                text-align: left;
+            }
+
+            .doc-step {
+                margin-bottom: 25px;
+                text-align: left;
+                width: 100%;
+            }
+
+            figure {
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            figcaption {
+                font-size: 0.9em;
+                color: #555;
+                margin-top: 5px;
             }
         </style>
     </head>
@@ -142,6 +161,161 @@
                     downloads the container image can inspect its history and extract those.
                 </li>
             </ul>
+        </div>
+
+        <h2>Practical Task Documentation</h2>
+
+        <div class="doc-step">
+            <h3>1. Source Code and Dockerfile Configuration</h3>
+            <p>
+                I created a public GitHub repository named cloud-services-assignment-2 to hold my
+                application code (index.html) and the build instructions (Dockerfile). When
+                deploying to the cloud, you don't install software manually, instead, you write a
+                Dockerfile to tell the platform exactly how to package your app. One major detail I
+                had to handle was the network port, because CSC Rahti has some security rules, so
+                bassicly it runs containers as a standard unprivileged user, not as the "root"
+                admin. Normal web servers usually try to bind to port 80, but normal users aren't
+                allowed to use ports certain ports, which causes a "Permission denied". To solve
+                this, I used the nginxinc/nginx-unprivileged:alpine base image and explicitly told
+                it to listen on port 8080.
+            </p>
+
+            <figure>
+                <img
+                    src="https://a3s.fi/swift/v1/Cloud-Services1/github-repo-assignment2.png"
+                    alt="GitHub Repository for Assignment 2"
+                    style="
+                        width: 100%;
+                        max-width: 600px;
+                        height: auto;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    "
+                />
+                <figcaption>
+                    Figure 1: GitHub Repository structure with Dockerfile and index.html.
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="doc-step">
+            <h3>2. CSC Project Setup</h3>
+            <p>
+                Before deploying anything, I had to configure my cloud environment using the MyCSC
+                portal under my assigned project. This dashboard is where I manage the project
+                lifetime and enable different cloud resources. For this assignment, I needed to
+                activate three different services: CSC Rahti (the Platform as a Service that will
+                run my container), cPouta (the Infrastructure as a Service virtual machines), and
+                Allas (the object storage service to host my files). You have to explicitly activate
+                these because they are separate environments that consume the project's Billing
+                Units in different ways.
+            </p>
+            <figure>
+                <img
+                    src="https://a3s.fi/swift/v1/Cloud-Services1/my-csc-project.png"
+                    alt="CSC MyCSC Project Overview"
+                    style="
+                        width: 100%;
+                        max-width: 600px;
+                        height: auto;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    "
+                />
+                <figcaption>
+                    Figure 2: Active CSC Project dashboard showing enabled Rahti and Allas services.
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="doc-step">
+            <h3>3. Container Deployment on CSC Rahti</h3>
+            <p>
+                This step shows the real benefit of a PaaS platform. Instead of building the
+                container on my own computer, I simply provided the CSC Rahti Web Console with the
+                link to my GitHub repository. Rahti automatically pulled the code, read the
+                Dockerfile, built the image, and deployed it. As seen in the console screenshot, it
+                creates a "Deployment" that manages Pods (the actual running instances of the
+                container). If one of these Pods crashes or is deleted, the orchestrator will
+                automatically spin up a new one to replace it, ensuring the website stays online
+                without me having to fix it manually.
+            </p>
+            <figure>
+                <img
+                    src="https://a3s.fi/swift/v1/Cloud-Services1/rahti-console-csc.png"
+                    alt="CSC Rahti Workload Console"
+                    style="
+                        width: 100%;
+                        max-width: 600px;
+                        height: auto;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    "
+                />
+                <figcaption>
+                    Figure 3: Rahti Platform console displaying active deployment and running the
+                    pods
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="doc-step">
+            <h3>4. Public Application Route</h3>
+            <p>
+                Even though the container is running successfully inside Rahti, it is isolated in an
+                internal network and nobody on the internet can see it yet. To make the website
+                public, I had to create an "edge-TLS Route". This route acts as a bridge, taking
+                public internet traffic and forwarding it securely to my container's internal port
+                8080. Choosing an edge TLS route is important because Rahti automatically provides a
+                secure certificate for it meaning the website loads over a safe HTTPS connection
+                instead of plain HTTP.
+            </p>
+            <figure>
+                <img
+                    src="https://a3s.fi/swift/v1/Cloud-Services1/live-website.png"
+                    alt="Live Deployed Website"
+                    style="
+                        width: 100%;
+                        max-width: 600px;
+                        height: auto;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    "
+                />
+                <figcaption>
+                    Figure 4: The live application running publicly on CSC Rahti.
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="doc-step">
+            <h3>5. Documentation Media Storage in CSC Allas</h3>
+            <p>
+                To host the screenshots for this documentation, I used CSC Allas, which is an object
+                storage service similar to Amazon S3. Unlike a normal computer hard drive with
+                nested folders, object storage keeps data in flat containers called "buckets". I
+                created a bucket named Cloud-Services1, uploaded my images, and set the access
+                rights to public so anyone with the link can view them. This is a much better way to
+                handle media for web pages because object storage is designed to deliver static
+                files quickly over the internet, without taking up space inside the actual web
+                application container.
+            </p>
+            <figure>
+                <img
+                    src="https://a3s.fi/swift/v1/Cloud-Services1/allas-csc.png"
+                    alt="CSC Allas Object Storage Bucket"
+                    style="
+                        width: 100%;
+                        max-width: 600px;
+                        height: auto;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    "
+                />
+                <figcaption>
+                    Figure 5: CSC Allas object storage bucket hosting the screenshots.
+                </figcaption>
+            </figure>
         </div>
     </body>
 </html>
